@@ -5,6 +5,16 @@
 
 module OptunaDashboard
 
-greet() = print("Hello World!")
+"""
+    run(filpath)
+
+Spawns a local web service running the Optuna Dashboard.
+
+# Arguments 
+- `filepath::String` a filepath for a database to open (default=nothing).
+""" 
+function run(filepath::Union{String, Nothing}=nothing)
+
+end
 
 end # module OptunaDashboard
