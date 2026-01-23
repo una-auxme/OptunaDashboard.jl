@@ -26,17 +26,15 @@ Spawns a local web service running the Optuna Dashboard.
 
 # Keyword Arguments
 - `open_browser::Bool` if a browser window should be opened (default=`true`).
-""" 
-function run(filepath::Union{String, Nothing}=nothing; open_browser::Bool=true)
+"""
+function run(filepath::Union{String,Nothing} = nothing; open_browser::Bool = true)
     storage = optuna.storages.InMemoryStorage() # ToDo: allow for different storages
 
     if open_browser
         DefaultApplication.open("http://localhost:8080/")
     end
-    
-    optuna_dashboard.run_server(storage) 
 
-    return odb
+    return optuna_dashboard.run_server(storage)
 end
 
 end # module OptunaDashboard

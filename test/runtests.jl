@@ -7,5 +7,7 @@ using OptunaDashboard
 using Test
 
 @testset "OptunaDashboard.jl" begin
-    # Write your tests here.
+    
+    @test !isnothing(OptunaDashboard.run(; open_browser=false))
+
 end
