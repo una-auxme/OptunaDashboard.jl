@@ -12,7 +12,7 @@ import DefaultApplication
 const optuna_dashboard = PythonCall.pynew()
 
 function __init__()
-    CondaPkg.add("optuna-dashboard")
+    # CondaPkg.add("optuna-dashboard")
     return PythonCall.pycopy!(optuna_dashboard, PythonCall.pyimport("optuna_dashboard"))
 end
 
