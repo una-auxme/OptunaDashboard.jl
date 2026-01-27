@@ -1,10 +1,16 @@
 name = "OptunaDashboard"
 uuid = "5594cc6f-4156-45fe-b9e0-f9dc490d6e0a"
+authors = ["Julian Trommer <julian.trommer@uni-a.de>", "Valentin Höpfner <valentin.hoepfner@uni-a.de>", "Andreas Hofmann <andreas.hofmann@uni-a.de>", "Josef Kircher <josef.kircher@uni-a.de>", "Tobias Thummerer <tobias.thummerer@uni-a.de>"]
 version = "0.1.0"
-authors = ["Julian Trommer <julian.trommer@uni-a.de>", "Valentin Höpfner <valentin.hoepfner@uni-a.de>", "Andreas Hofman <andreas.hofman@uni-a.de>", "Josef Kircher <josef.kircher@uni-a.de>", "Tobias Thummerer <tobias.thummerer@uni-a.de>"]
 
 [deps]
+CondaPkg = "992eb4ea-22a4-4c89-a5bb-47a3300528ab"
+DefaultApplication = "3f0dd361-4fe0-5fc6-8523-80b14ec94d85"
+Optuna = "a5d0552b-b2dc-4f08-ac5c-85ca7d701b92"
 PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
 
 [compat]
-PythonCall = "0.9.31"
+CondaPkg = "0.2.0"
+DefaultApplication = "1.1.0"
+Optuna = "0.1.0"
+PythonCall = "0.9.0"

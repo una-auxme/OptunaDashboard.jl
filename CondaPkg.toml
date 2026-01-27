@@ -1,2 +1,2 @@
 [deps]
-optuna-dashboard = ""
+optuna-dashboard = ">=0.20"
