@@ -26,9 +26,9 @@ Spawns a local web service running the Optuna Dashboard.
 
 # Keyword Arguments
 - `open_browser::Bool` if a browser window should be opened (default=`true`).
+- `storage` the storage to work with, defaults to `InMemoryStorage`.
 """
-function run(filepath::Union{String,Nothing} = nothing; open_browser::Bool = true)
-    storage = optuna.storages.InMemoryStorage() # ToDo: allow for different storages
+function run(filepath::Union{String,Nothing}=nothing; open_browser::Bool=true, storage=optuna.storages.InMemoryStorage())
 
     if open_browser
         DefaultApplication.open("http://localhost:8080/")
