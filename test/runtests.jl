@@ -4,11 +4,30 @@
 #
 
 using OptunaDashboard
+using Optuna
 using Test
 
 @testset "OptunaDashboard.jl" begin
 
-    # ToDo: Add tests, the following is blocking ...
-    # @test !isnothing(OptunaDashboard.run(; open_browser = false))
+    # we run the dashboard in a thread, because it's blocking, and kill it after a few seconds 
+    t = Threads.@spawn begin
+
+        # central database storage for all studies
+        database_url = "test/storage"
+        database_name = "test_db"
+
+        # name and artifact path for the study
+        study_name = "test-study"
+        artifact_path = "test/artifacts"
+
+        # Create/Load database storage for studies
+        storage_url = create_sqlite_url(database_url, database_name)
+        storage = RDBStorage(storage_url)
+
+        OptunaDashboard.run(storage; open_browser = false)
+    end
+
+    sleep(10.0)
+    Base.throwto(t, InterruptException())
 
 end

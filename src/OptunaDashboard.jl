@@ -5,7 +5,6 @@
 
 module OptunaDashboard
 
-using Optuna: optuna
 import PythonCall, CondaPkg
 import DefaultApplication
 
@@ -22,19 +21,18 @@ end
 Spawns a local web service running the Optuna Dashboard.
 
 # Arguments 
-- `filepath::String` a filepath for a database to open (default=`nothing`).
+- `storage` the Optuna storage to work with.
 
 # Keyword Arguments
 - `open_browser::Bool` if a browser window should be opened (default=`true`).
-- `storage` the storage to work with, defaults to `InMemoryStorage`.
 """
-function run(filepath::Union{String,Nothing}=nothing; open_browser::Bool=true, storage=optuna.storages.InMemoryStorage())
+function run(storage; open_browser::Bool = true)
 
     if open_browser
         DefaultApplication.open("http://localhost:8080/")
     end
 
-    return optuna_dashboard.run_server(storage)
+    return optuna_dashboard.run_server(storage.storage)
 end
 
 end # module OptunaDashboard
