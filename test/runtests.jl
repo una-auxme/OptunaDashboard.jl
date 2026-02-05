@@ -25,7 +25,7 @@ addprocs(1)
         storage_url = create_sqlite_url(database_url, database_name)
         storage = RDBStorage(storage_url)
 
-        OptunaDashboard.run(storage; open_browser=false)
+        OptunaDashboard.run(storage; open_browser = false)
     end
 
     sleep(10.0)
