@@ -34,12 +34,12 @@ See [run_server](https://optuna-dashboard.readthedocs.io/en/stable/_generated/op
 """
 function run_server(
     storage,
-    host::String="localhost",
-    port::Integer=8080,
-    artifact_store=nothing;
-    artifact_backend=nothing,
-    llm_provider=nothing,
-    open_browser::Bool=true,
+    host::String = "localhost",
+    port::Integer = 8080,
+    artifact_store = nothing;
+    artifact_backend = nothing,
+    llm_provider = nothing,
+    open_browser::Bool = true,
 )
 
     if open_browser
@@ -52,10 +52,10 @@ function run_server(
         port,
         isnothing(artifact_store) ? PythonCall.pybuiltins.None :
         artifact_store.artifact_store;
-        artifact_backend=isnothing(artifact_backend) ? PythonCall.pybuiltins.None :
-                         artifact_backend.artifact_backend,
-        llm_provider=isnothing(llm_provider) ? PythonCall.pybuiltins.None :
-                     llm_provider.llm_provider,
+        artifact_backend = isnothing(artifact_backend) ? PythonCall.pybuiltins.None :
+                           artifact_backend.artifact_backend,
+        llm_provider = isnothing(llm_provider) ? PythonCall.pybuiltins.None :
+                       llm_provider.llm_provider,
     )
 end
 
