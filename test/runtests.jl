@@ -25,7 +25,7 @@ addprocs(2)
     OptunaDashboard.run_server(storage, args...; kwargs...)
 end
 
-function test_server(host::String="localhost", port::Integer=8080, args...; kwargs...)
+function test_server(host::String = "localhost", port::Integer = 8080, args...; kwargs...)
     pid = workers()[1]
     f = @spawnat pid run_test_server(args...; kwargs...)
 
@@ -42,6 +42,6 @@ function test_server(host::String="localhost", port::Integer=8080, args...; kwar
 end
 
 @testset "OptunaDashboard.jl" begin
-    test_server(; open_browser=false)
-    test_server("localhost", 8080; open_browser=false)
+    test_server(; open_browser = false)
+    test_server("localhost", 8080; open_browser = false)
 end

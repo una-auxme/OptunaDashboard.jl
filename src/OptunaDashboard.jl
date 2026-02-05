@@ -50,12 +50,9 @@ function run_server(
         storage.storage,
         host,
         port,
-        isnothing(artifact_store) ? PythonCall.pybuiltins.None :
-        artifact_store.artifact_store;
-        artifact_backend = isnothing(artifact_backend) ? PythonCall.pybuiltins.None :
-                           artifact_backend.artifact_backend,
-        llm_provider = isnothing(llm_provider) ? PythonCall.pybuiltins.None :
-                       llm_provider.llm_provider,
+        artifact_store;
+        artifact_backend = artifact_backend.artifact_backend,
+        llm_provider = llm_provider.llm_provider,
     )
 end
 
