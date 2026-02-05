@@ -16,24 +16,24 @@ function __init__()
 end
 
 """
-    run_server(storage, host, port, artifact_store; kwargs...)
+    run_server(storage::Union{String, Optuna.BaseStorage}, host::String="localhost", port::Integer=8080, artifact_store::Union{Optuna.ArtifactStore, Optuna.ArtifactBackend, Nothing}=nothing; artifact_backend::Union{Optuna.ArtifactBackend, Nothing}=nothing, llm_provider::Union{Optuna.LLMProvider, Nothing}=nothing, open_browser::Bool=true)
 
 Spawns a local web service running the Optuna Dashboard.
 See [run_server](https://optuna-dashboard.readthedocs.io/en/stable/_generated/optuna_dashboard.run_server.html#optuna-dashboard-run-server) in the Optuna documentation.
 
 # Arguments 
-- `storage` the Optuna storage to work with.
-- `host::String` host address, defaults to `"localhost"`
-- `port::Integer` port number
-- `artifact_store` the artifact storage (default `nothing`)
+- `storage::Union{String, Optuna.BaseStorage}` the Optuna storage to work with.
+- `host::String="localhost"` host address, defaults to `"localhost"`
+- `port::Integer=8080` port number
+- `artifact_store::Union{Optuna.ArtifactStore, Optuna.ArtifactBackend, Nothing}=nothing` the artifact storage (default `nothing`)
 
 # Keyword Arguments
-- `artifact_backend` the artifact backend (default `nothing`)
-- `llm_provider` the LLM provider (default `nothing`)
-- `open_browser::Bool` if a browser window should be opened (default=`true`).
+- `artifact_backend::Union{Optuna.ArtifactBackend, Nothing}=nothing` the artifact backend (default `nothing`)
+- `llm_provider::Union{Optuna.LLMProvider, Nothing}=nothing` the LLM provider (default `nothing`)
+- `open_browser::Bool=true` if a browser window should be opened (default=`true`).
 """
 function run_server(
-    storage,
+    storage::Any,
     host::String = "localhost",
     port::Integer = 8080,
     artifact_store = nothing;
