@@ -43,7 +43,7 @@ function run_server(
 )
 
     if open_browser
-        DefaultApplication.open("http://$(host):8080/")
+        DefaultApplication.open("http://$(host):$(port)/")
     end
 
     return optuna_dashboard.run_server(
