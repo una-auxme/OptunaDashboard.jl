@@ -36,9 +36,9 @@ function run_server(
     storage::Any,
     host::String = "localhost",
     port::Integer = 8080,
-    artifact_store = nothing;
-    artifact_backend = nothing,
-    llm_provider = nothing,
+    artifact_store::Any = nothing;
+    artifact_backend::Any = nothing,
+    llm_provider::Any = nothing,
     open_browser::Bool = true,
 )
 
@@ -47,12 +47,13 @@ function run_server(
     end
 
     return optuna_dashboard.run_server(
-        storage.storage,
+        isa(storage, String) ? storage : storage.storage,
         host,
         port,
-        artifact_store;
-        artifact_backend = artifact_backend.artifact_backend,
-        llm_provider = llm_provider.llm_provider,
+        isnothing(artifact_store) ? nothing : artifact_store.artifact_store;
+        artifact_backend = isnothing(artifact_backend) ? nothing :
+                           artifact_backend.artifact_backend,
+        llm_provider = isnothing(llm_provider) ? nothing : llm_provider.llm_provider,
     )
 end
 
