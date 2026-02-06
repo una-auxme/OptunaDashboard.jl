@@ -13,6 +13,6 @@ This package is based on the Python API that is provided by Preferred Networks, 
 
 ## How to use OptunaDashboard.jl
 
-```julia-repl
-import OptunaDashboard; OptunaDashboard.run()
+```julia
+import OptunaDashboard; OptunaDashboard.run_server(my_storage)
 ```

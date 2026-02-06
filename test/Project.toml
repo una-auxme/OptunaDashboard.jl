@@ -1,2 +1,5 @@
 [deps]
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Optuna = "a5d0552b-b2dc-4f08-ac5c-85ca7d701b92"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
