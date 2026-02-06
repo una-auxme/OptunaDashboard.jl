@@ -16,7 +16,13 @@ function __init__()
 end
 
 """
-    run_server(storage::Union{String, Optuna.BaseStorage}, host::String="localhost", port::Integer=8080, artifact_store::Union{Optuna.ArtifactStore, Optuna.ArtifactBackend, Nothing}=nothing; artifact_backend::Union{Optuna.ArtifactBackend, Nothing}=nothing, llm_provider::Union{Optuna.LLMProvider, Nothing}=nothing, open_browser::Bool=true)
+    run_server(storage::Union{String, Optuna.BaseStorage}, 
+        host::String="localhost", 
+        port::Integer=8080, 
+        artifact_store::Union{Optuna.ArtifactStore, Optuna.ArtifactBackend, Nothing}=nothing; 
+        artifact_backend::Union{Optuna.ArtifactBackend, Nothing}=nothing, 
+        llm_provider::Union{Optuna.LLMProvider, Nothing}=nothing, 
+        open_browser::Bool=true)
 
 Spawns a local web service running the Optuna Dashboard.
 See [run_server](https://optuna-dashboard.readthedocs.io/en/stable/_generated/optuna_dashboard.run_server.html#optuna-dashboard-run-server) in the Optuna documentation.
