@@ -5,8 +5,9 @@
 
 module OptunaDashboard
 
-import PythonCall, CondaPkg
-import DefaultApplication
+using PythonCall: PythonCall
+using CondaPkg: CondaPkg
+using DefaultApplication: DefaultApplication
 
 const optuna_dashboard = PythonCall.pynew()
 
@@ -16,18 +17,18 @@ function __init__()
 end
 
 """
-    run_server(storage::Union{String, Optuna.BaseStorage}, 
-        host::String="localhost", 
-        port::Integer=8080, 
-        artifact_store::Union{Optuna.ArtifactStore, Optuna.ArtifactBackend, Nothing}=nothing; 
-        artifact_backend::Union{Optuna.ArtifactBackend, Nothing}=nothing, 
-        llm_provider::Union{Optuna.LLMProvider, Nothing}=nothing, 
+    run_server(storage::Union{String, Optuna.BaseStorage},
+        host::String="localhost",
+        port::Integer=8080,
+        artifact_store::Union{Optuna.ArtifactStore, Optuna.ArtifactBackend, Nothing}=nothing;
+        artifact_backend::Union{Optuna.ArtifactBackend, Nothing}=nothing,
+        llm_provider::Union{Optuna.LLMProvider, Nothing}=nothing,
         open_browser::Bool=true)
 
 Spawns a local web service running the Optuna Dashboard.
 See [run_server](https://optuna-dashboard.readthedocs.io/en/stable/_generated/optuna_dashboard.run_server.html#optuna-dashboard-run-server) in the Optuna documentation.
 
-# Arguments 
+# Arguments
 - `storage::Union{String, Optuna.BaseStorage}` the Optuna storage to work with.
 - `host::String="localhost"` host address, defaults to `"localhost"`
 - `port::Integer=8080` port number
@@ -40,14 +41,13 @@ See [run_server](https://optuna-dashboard.readthedocs.io/en/stable/_generated/op
 """
 function run_server(
     storage::Any,
-    host::String = "localhost",
-    port::Integer = 8080,
-    artifact_store::Any = nothing;
-    artifact_backend::Any = nothing,
-    llm_provider::Any = nothing,
-    open_browser::Bool = true,
+    host::String="localhost",
+    port::Integer=8080,
+    artifact_store::Any=nothing;
+    artifact_backend::Any=nothing,
+    llm_provider::Any=nothing,
+    open_browser::Bool=true,
 )
-
     if open_browser
         DefaultApplication.open("http://$(host):$(port)/")
     end
@@ -57,9 +57,12 @@ function run_server(
         host,
         port,
         isnothing(artifact_store) ? nothing : artifact_store.artifact_store;
-        artifact_backend = isnothing(artifact_backend) ? nothing :
-                           artifact_backend.artifact_backend,
-        llm_provider = isnothing(llm_provider) ? nothing : llm_provider.llm_provider,
+        artifact_backend=if isnothing(artifact_backend)
+            nothing
+        else
+            artifact_backend.artifact_backend
+        end,
+        llm_provider=isnothing(llm_provider) ? nothing : llm_provider.llm_provider,
     )
 end
 
